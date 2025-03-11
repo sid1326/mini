@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperGen - AI-Powered Research Paper Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login/Register Page -->
+        <div id="auth-page" class="page">
+            <div class="container">
+                <h1>PaperGen</h1>
+                <div class="tabs">
+                    <button class="tab active" data-tab="login">Login</button>
+                    <button class="tab" data-tab="register">Register</button>
+                </div>
+                <div id="login-form" class="form">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button class="btn primary" onclick="login()">Login</button>
+                </div>
+                <div id="register-form" class="form" style="display: none;">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <button class="btn primary" onclick="register()">Register</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page" style="display: none;">
+            <header>
+                <h1>Dashboard</h1>
+                <button class="btn" onclick="logout()">Logout</button>
+            </header>
+            <div class="container">
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total Papers</h3>
+                        <p id="total-papers">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Completed</h3>
+                        <p id="completed-papers">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>In Progress</h3>
+                        <p id="in-progress-papers">0</p>
+                    </div>
+                </div>
+                <button class="btn primary" onclick="showGeneratePage()">Generate New Paper</button>
+                <div id="papers-list"></div>
+            </div>
+        </div>
+
+        <!-- Generate Paper Page -->
+        <div id="generate-page" class="page" style="display: none;">
+            <header>
+                <h1>Generate Paper</h1>
+                <button class="btn" onclick="showDashboard()">Back to Dashboard</button>
+            </header>
+            <div class="container">
+                <div class="form">
+                    <input type="text" id="paper-topic" placeholder="Paper Topic" required>
+                    <input type="text" id="paper-keywords" placeholder="Keywords (optional)">
+                    <select id="paper-type">
+                        <option value="Research Paper">Research Paper</option>
+                        <option value="Literature Review">Literature Review</option>
+                        <option value="Case Study">Case Study</option>
+                        <option value="Essay">Essay</option>
+                    </select>
+                    <textarea id="paper-notes" placeholder="Additional Notes (optional)"></textarea>
+                    <button class="btn primary" onclick="generatePaper()">Generate Paper</button>
+                </div>
+                <div class="diagram">
+                    <h3>Key Diagram</h3>
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-03-08%20212821-U1iiLAWLIlqODAgSM8Zw4KGdUMrH3h.png" alt="Paper Generation Process">
+                </div>
+            </div>
+        </div>
+
+        <!-- Processing Page -->
+        <div id="processing-page" class="page" style="display: none;">
+            <div class="container">
+                <h1>Processing Your Paper</h1>
+                <div class="progress-bar">
+                    <div id="progress-indicator"></div>
+                </div>
+                <p id="progress-text">0%</p>
+                <div class="processing-details">
+                    <div>
+                        <h3>Current Stage</h3>
+                        <p id="current-stage">Initializing</p>
+                    </div>
+                    <div>
+                        <h3>Time Elapsed</h3>
+                        <p id="time-elapsed">00:00</p>
+                    </div>
+                </div>
+                <ul id="processing-steps"></ul>
+            </div>
+        </div>
+
+        <!-- Success Page -->
+        <div id="success-page" class="page" style="display: none;">
+            <div class="container">
+                <h1>Your paper is ready!</h1>
+                <p>Your paper has been successfully generated. You can download it now or access it later from your dashboard.</p>
+                <button class="btn primary" onclick="downloadPaper()">Download PDF</button>
+                <button class="btn" onclick="showDashboard()">Back to Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PaperGen. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
